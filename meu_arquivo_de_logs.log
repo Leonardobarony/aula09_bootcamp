@@ -1,0 +1,116 @@
+2025-03-04T09:46:38.359753-0300 INFO Chamando função 'soma' com args (2, 3) e kwargs {} utilis_log.py
+2025-03-04T09:46:38.360093-0300 INFO voce digitou valores corretos, parabens 5 exemplo_00.py
+2025-03-04T09:46:38.360225-0300 INFO Função 'soma' retornou 5 utilis_log.py
+2025-03-04T09:46:38.360345-0300 INFO Chamando função 'soma' com args (2, '7') e kwargs {} utilis_log.py
+2025-03-04T09:46:38.360443-0300 CRITICAL voce tem digitar valor incorreto exemplo_00.py
+2025-03-04T09:46:38.360604-0300 INFO Função 'soma' retornou None utilis_log.py
+2025-03-04T09:46:38.360784-0300 INFO Chamando função 'soma' com args (15.5, 25.8) e kwargs {} utilis_log.py
+2025-03-04T09:46:38.361629-0300 INFO voce digitou valores corretos, parabens 41.3 exemplo_00.py
+2025-03-04T09:46:38.361789-0300 INFO Função 'soma' retornou 41.3 utilis_log.py
+2025-03-04T09:49:07.650682-0300 INFO Chamando função 'extrair_dados_e_consolidar' com args ('data',) e kwargs {} utilis_log.py
+2025-03-04T09:49:07.674174-0300 INFO Função 'extrair_dados_e_consolidar' retornou             Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15 utilis_log.py
+2025-03-04T09:49:07.679639-0300 INFO Chamando função 'calcular_kpi_de_total_de_vendas' com args (            Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15,) e kwargs {} utilis_log.py
+2025-03-04T09:49:07.683117-0300 INFO Função 'calcular_kpi_de_total_de_vendas' retornou             Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500 utilis_log.py
+2025-03-04T09:49:07.685708-0300 INFO Chamando função 'carregar_dados' com args (            Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500, ['csv', 'parquet']) e kwargs {} utilis_log.py
+2025-03-04T09:49:07.695738-0300 ERROR Exceção capturada em 'carregar_dados': Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet. utilis_log.py
+Traceback (most recent call last):
+
+  File "c:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\pipeline.py", line 6, in <module>
+    pipeline_calcular_kpi_de_vendas_consolidado(pasta_argumento, formato_de_saida)
+    │                                           │                └ ['csv', 'parquet']
+    │                                           └ 'data'
+    └ <function pipeline_calcular_kpi_de_vendas_consolidado at 0x00000201B3DE8360>
+
+  File "c:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\etl.py", line 37, in pipeline_calcular_kpi_de_vendas_consolidado
+    carregar_dados(data_frame_calculado, formato_de_saida)
+    │              │                     └ ['csv', 'parquet']
+    │              └             Produto    Categoria  Quantidade  Venda        Data  Total
+    │                0    Notebook Gamer  Eletrônicos           3   1500  2...
+    └ <function carregar_dados at 0x00000201B3DE82C0>
+
+> File "c:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\utilis_log.py", line 27, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+             │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+             └ <function carregar_dados at 0x00000201B3DD0B80>
+
+  File "c:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\etl.py", line 29, in carregar_dados
+    df.to_parquet("dados.parquet", index=False)
+    │  └ <function DataFrame.to_parquet at 0x00000201B3976F20>
+    └             Produto    Categoria  Quantidade  Venda        Data  Total
+      0    Notebook Gamer  Eletrônicos           3   1500  2...
+
+  File "C:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\.venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           │     │       └ {'index': False}
+           │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+           │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+           └ <function DataFrame.to_parquet at 0x00000201B3976E80>
+  File "C:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\.venv\Lib\site-packages\pandas\core\frame.py", line 3113, in to_parquet
+    return to_parquet(
+           └ <function to_parquet at 0x00000201B3A944A0>
+  File "C:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 476, in to_parquet
+    impl = get_engine(engine)
+           │          └ 'auto'
+           └ <function get_engine at 0x00000201B3B159E0>
+  File "C:\Users\Dell\OneDrive\workspace\jornada\lbarony\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 67, in get_engine
+    raise ImportError(
+
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2025-03-04T09:50:28.739772-0300 INFO Chamando função 'extrair_dados_e_consolidar' com args ('data',) e kwargs {} utilis_log.py
+2025-03-04T09:50:28.753525-0300 INFO Função 'extrair_dados_e_consolidar' retornou             Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15 utilis_log.py
+2025-03-04T09:50:28.756818-0300 INFO Chamando função 'calcular_kpi_de_total_de_vendas' com args (            Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15,) e kwargs {} utilis_log.py
+2025-03-04T09:50:28.760759-0300 INFO Função 'calcular_kpi_de_total_de_vendas' retornou             Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500 utilis_log.py
+2025-03-04T09:50:28.764482-0300 INFO Chamando função 'carregar_dados' com args (            Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500, ['csv', 'parquet']) e kwargs {} utilis_log.py
+2025-03-04T09:50:29.094859-0300 INFO Função 'carregar_dados' retornou None utilis_log.py
+2025-03-04T09:52:09.188393-0300 INFO Chamando função 'extrair_dados_e_consolidar' com args ('data',) e kwargs {} utilis_log.py
+2025-03-04T09:52:09.195560-0300 INFO Função 'extrair_dados_e_consolidar' retornou             Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15 utilis_log.py
+2025-03-04T09:52:09.198045-0300 INFO Chamando função 'calcular_kpi_de_total_de_vendas' com args (            Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15,) e kwargs {} utilis_log.py
+2025-03-04T09:52:09.201242-0300 INFO Função 'calcular_kpi_de_total_de_vendas' retornou             Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500 utilis_log.py
+2025-03-04T09:52:09.204343-0300 INFO Chamando função 'carregar_dados' com args (            Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500, ['csv', 'parquet']) e kwargs {} utilis_log.py
+2025-03-04T09:52:09.366925-0300 INFO Função 'carregar_dados' retornou None utilis_log.py
